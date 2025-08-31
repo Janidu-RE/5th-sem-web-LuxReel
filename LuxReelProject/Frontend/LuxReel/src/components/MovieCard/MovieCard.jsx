@@ -1,0 +1,23 @@
+import React from "react";
+import "./MovieCard.css";
+
+function MovieCard({ movie, onBook }) {
+  if (!movie) return null;
+
+  return (
+    <div className="movie-card">
+      <img src={movie.poster} alt={movie.title} className="movie-poster" />
+      <div className="overlay">
+        <div className="movie-details">
+          <h3>{movie.title}</h3>
+          <p>{movie.genres.join(", ")}</p>
+        </div>
+        <button className="book-btn" onClick={() => onBook(movie)}>
+          Book Now
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default MovieCard;

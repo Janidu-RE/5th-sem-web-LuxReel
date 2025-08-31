@@ -1,0 +1,10 @@
+.card-grid-inline {
+  padding: 20px;
+  text-align: center; /* keeps items centered if they don’t fill full row */
+}
+
+.card-wrapper {
+  display: inline-block;
+  margin: 10px;
+  vertical-align: top;
+}

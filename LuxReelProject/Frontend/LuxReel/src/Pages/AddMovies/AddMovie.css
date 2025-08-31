@@ -1,0 +1,83 @@
+.add-movie-wrapper {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  display: flex;
+  justify-content: center ;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.add-movie-container {
+  max-width: 400px;
+  margin: 50px auto;
+  background-color: #1c1c1c;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 193, 7, 0.3);
+  color: white;
+}
+
+.add-movie-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ffc107;
+}
+
+.add-movie-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-movie-form label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.add-movie-form input,
+.add-movie-form textarea,
+.add-movie-form select {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background: #2a2a2a;
+  color: white;
+  outline: none;
+}
+
+.add-movie-form select {
+  cursor: pointer;
+}
+
+.add-movie-form textarea {
+  resize: none;
+  height: 80px;
+}
+
+.poster-preview {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.poster-preview img {
+  max-width: 100%;
+  border-radius: 8px;
+  border: 2px solid #ffc107;
+}
+
+.submit-btn {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #ffc107;
+  color: black;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #e0a800;
+}
