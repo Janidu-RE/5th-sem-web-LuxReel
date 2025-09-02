@@ -7,6 +7,7 @@ const Navbar = () => {
 const [search, setSearch] = useState("");
 const [movies, setMovies] = useState([]);
 
+
 useEffect(() =>{
   if(search.trim()==="") return;
   

@@ -12,8 +12,8 @@ function MovieCard({ movie, onBook }) {
           <h3>{movie.title}</h3>
           <p>{movie.genres.join(", ")}</p>
         </div>
-        <button className="book-btn" onClick={() => onBook(movie)}>
-          Book Now
+        <button className="card-book-btn" onClick={() => onBook(movie)}>
+          More Info
         </button>
       </div>
     </div>

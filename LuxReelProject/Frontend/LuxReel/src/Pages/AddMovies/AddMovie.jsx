@@ -13,6 +13,7 @@ const AddMovie = () => {
   const [successMsg, setSuccessMsg] = useState("");
   const [poster, setPoster] = useState("");
   const [language, setLanguage] = useState("");
+  const [trailerLink, setTrailerLink] = useState("");
 
   const genreOptions = [
     "Action",
@@ -96,6 +97,7 @@ const AddMovie = () => {
           rating,
           category,
           language,
+          trailerLink,
         }),
       });
 
@@ -186,6 +188,17 @@ const AddMovie = () => {
           <option value="now_showing" >Now Showing</option>
           <option value="coming_soon">Coming Soon</option>
         </select>
+
+        <label>Trailer Link</label>
+        <input
+          type="text"
+          placeholder="Enter trailer link"
+          value={trailerLink}
+          onChange={(e) => setTrailerLink(e.target.value)}
+          required
+        />
+
+
 
         <label>Description</label>
         <textarea

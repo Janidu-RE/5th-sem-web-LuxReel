@@ -3,14 +3,13 @@
   align-items: center;
   justify-content: space-between;
   background-color: #1a1a1a;
-  padding: 12px 40px;
+  padding: 20px 40px;
   color: white;
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
-/* Logo */
 .navbar-logo {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-size: 24px;

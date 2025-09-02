@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import MovieCard from "../MovieCard/MovieCard";
 import "./CardGrid.css";
 
 const CardGrid = () => {
   const [movies, setMovies] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -18,15 +20,15 @@ const CardGrid = () => {
     fetchMovies();
   }, []);
 
-  const handleBook = (movie) => {
-    alert(`Booking started for: ${movie.title}`);
+  const handleView = (movie) => {
+    navigate("/movieDetails", { state: { movie } });
   };
 
   return (
     <div className="card-grid-inline">
       {movies.map((movie) => (
         <div key={movie.id} className="card-wrapper">
-          <MovieCard movie={movie} onBook={handleBook} />
+          <MovieCard movie={movie} onBook={handleView} />
         </div>
       ))}
     </div>

@@ -51,7 +51,7 @@
   margin: 4px 0;
 }
 
-.book-btn {
+.card-book-btn {
   margin-top: 10px;
   padding: 6px 12px;
   background-color: #ff9800;
@@ -65,6 +65,6 @@
   transition: opacity 0.3s;
 }
 
-.movie-card:hover .book-btn {
+.movie-card:hover .card-book-btn {
   opacity: 1;
 }
