@@ -1,0 +1,98 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 40px 60px;
+  flex-wrap: wrap;
+}
+
+.footer-left {
+  max-width: 600px;
+}
+
+.logo {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffcc00; 
+  cursor: pointer;
+}
+
+.logo-accent {
+  color: #ffffff;
+}
+
+.tagline {
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #ddd;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.contact-section,
+.follow-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-section h4,
+.follow-section h4 {
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.contact-icons,
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+/* === ICONS === */
+.contact-icons a,
+.social-icons a {
+  font-size: 2rem;            /* same size for all icons */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.contact-icons a:hover,
+.social-icons a:hover {
+  transform: scale(1.2);      
+}
+
+.contact-icons a:nth-child(1) svg { color: #0084ff; } 
+.contact-icons a:nth-child(2) svg { color: #ea4335; } 
+.contact-icons a:nth-child(3) svg { color: #25D366; }
+.contact-icons a:nth-child(4) svg { color: #34b7f1; }
+
+.social-icons a:nth-child(1) svg { color: #1877f2; } 
+.social-icons a:nth-child(2) svg { color: #ff0000; }  
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    gap: 40px;
+    padding: 30px;
+  }
+
+  .footer-right {
+    width: 100%;
+  }
+}

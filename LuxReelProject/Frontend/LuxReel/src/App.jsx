@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home/Home";
 import AddMovie from "./Pages/AddMovies/AddMovie";
 import SelectedMovie from "./Pages/SelectedMovie/SelectedMovie";
-import MovieDetails from "./components/MovieDetails/MovieDetails"
+import MovieDetails from "./Pages/MovieDetails/MovieDetails";
 
 function App() {
   return (

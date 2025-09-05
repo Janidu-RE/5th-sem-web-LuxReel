@@ -1,18 +1,16 @@
-import TrailerPlayer from '@/components/MovieDetails/MovieDetails';
-import React from 'react'
-import { useLocation } from 'react-router-dom'
+import TrailerPlayer from "@/Pages/MovieDetails/MovieDetails";
+import React from "react";
+import { useLocation } from "react-router-dom";
 
 const SelectedMovie = () => {
-
-    const location = useLocation();
-    const { movie } = location.state;
+  const location = useLocation();
+  const { movie } = location.state;
 
   return (
     <div>
-        <TrailerPlayer movie = {movie}/>
-      
+      <TrailerPlayer movie={movie} />
     </div>
-  )
-}
+  );
+};
 
-export default SelectedMovie
+export default SelectedMovie;

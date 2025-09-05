@@ -1,6 +1,8 @@
 import React from "react";
 import "./MovieDetails.css";
 import { useLocation } from "react-router-dom";
+import Navbar from "@/components/Navbar/Navbar";
+import Footer from "@/components/Footer/Footer";
 
 const MovieDetails = () => {
   const location = useLocation();
@@ -11,6 +13,8 @@ const MovieDetails = () => {
   
 
   return (
+    <div>
+      <Navbar/>
     <div className="trailer-app">
       <div className="trailer-wrapper">
         <div className="trailer-container">
@@ -22,6 +26,7 @@ const MovieDetails = () => {
             allowFullScreen
           ></iframe>
         </div>
+        
 
         <div className="trailer-details">
           <div className="poster-container">
@@ -47,15 +52,18 @@ const MovieDetails = () => {
           </div>
         </div>
       </div>
-
-    
-      <div className="trailer-description">
+       <div className="trailer-description">
         <h3>Synopsis</h3>
         <p>{movie.description}</p>
       </div>
+
+    
+     
       <div className="book-ticket-container">
         <button className="book-btn">Book Tickets</button>
       </div>
+    </div>
+    <Footer/>
     </div>
   );
 };

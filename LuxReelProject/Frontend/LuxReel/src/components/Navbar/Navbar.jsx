@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./Navbar.css";
+import "./Navbar.css"
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
 
@@ -28,7 +29,7 @@ useEffect(() =>{
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        Lux<span>Reel</span>
+        <></>Lux<span>Reel</span>
       </div>
 
       <div className="navbar-search">
@@ -37,7 +38,7 @@ useEffect(() =>{
       </div>
 
       <ul className="navbar-links">
-        <li><a href="#">Home</a></li>
+        <li><Link to="/">Home</Link></li>
         <li><a href="#">Locations</a></li>
         <li><a href="#">Promotions</a></li>
       </ul>

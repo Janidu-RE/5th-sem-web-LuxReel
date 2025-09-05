@@ -1,0 +1,14 @@
+.home-section {
+    padding: 40px 20px;
+}
+
+.home-title {
+    font-family: 'Poppins', system-ui, Avenir, Helvetica, Arial, sans-serif; /* nicer modern font */
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #ffffff; /* white text */
+    letter-spacing: 1px; /* little spacing for style */
+    font-weight: 600; /* bold but clean */
+}
