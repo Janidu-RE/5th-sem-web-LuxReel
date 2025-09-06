@@ -12,5 +12,6 @@ import java.util.Optional;
 public interface MoviesRepository extends MongoRepository<Movies, ObjectId> {
     List<Movies> findByCategory(String category);
     List<Movies> findByTitleIgnoreCaseContaining(String title);
+    void deleteByTitle(String title);
 }
 

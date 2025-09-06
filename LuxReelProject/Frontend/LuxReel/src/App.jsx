@@ -3,6 +3,8 @@ import Home from "./Pages/Home/Home";
 import AddMovie from "./Pages/AddMovies/AddMovie";
 import SelectedMovie from "./Pages/SelectedMovie/SelectedMovie";
 import MovieDetails from "./Pages/MovieDetails/MovieDetails";
+import Login from "./Pages/Login/Login";
+import AdminHome from "./Pages/AdminHome/AdminDashboard";
 
 function App() {
   return (
@@ -11,6 +13,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/addMovie" element={<AddMovie />} />
         <Route path="/movieDetails" element={<MovieDetails />} />
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/admin" element={<AdminHome/>}/>
+
       </Routes>
     </BrowserRouter>
   );

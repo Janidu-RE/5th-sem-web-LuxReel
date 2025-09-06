@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./AddMovie.css";
+import axios from "axios";
 
 const AddMovie = () => {
   const [posterPreview, setPosterPreview] = useState("");
@@ -43,11 +44,11 @@ const AddMovie = () => {
     }
   };
 
-    const uploadImageToCloudinary = async (file) => {
+  const uploadImageToCloudinary = async (file) => {
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", "LuxReel-movies");
-    formData.append("folder", "LuxReel"); 
+    formData.append("folder", "LuxReel");
 
     const response = await fetch(
       "https://api.cloudinary.com/v1_1/dapypoc2n/image/upload",
@@ -56,7 +57,6 @@ const AddMovie = () => {
         body: formData,
       }
     );
-
     const data = await response.json();
     return data.secure_url;
   };
@@ -73,22 +73,21 @@ const AddMovie = () => {
     setGenres(genres.filter((g) => g !== genre));
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       let posterUrl = "";
       if (poster) {
-        posterUrl = await uploadImageToCloudinary(poster); 
+        posterUrl = await uploadImageToCloudinary(poster);
       }
 
-      const response = await fetch("http://localhost:8080/api/movies", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
+      // get JWT from localStorage
+      const token = localStorage.getItem("token");
+
+      // use axios to post with Authorization header
+      const response = await axios.post(
+        "http://localhost:8080/api/movies",
+        {
           title,
           description,
           genres,
@@ -98,132 +97,135 @@ const AddMovie = () => {
           category,
           language,
           trailerLink,
-        }),
-      });
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-      const data = await response.json();
-
-      if (response.ok) {
+      if (response.status === 200 || response.status === 201) {
         setSuccessMsg("Movie added successfully!");
+        setError("");
       } else {
-        setError(data.message || "Failed to add movie");
+        setError("Failed to add movie");
       }
     } catch (err) {
+      console.error(err);
       setError("Server Error");
     }
   };
 
   return (
     <div className="add-movie-wrapper">
-    <div className="add-movie-container">
-      <h2>Add New Movie</h2>
-      <form className="add-movie-form" onSubmit={handleSubmit}>
-        
-        <label>Title</label>
-        <input
-          type="text"
-          placeholder="Enter movie title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
+      <div className="add-movie-container">
+        <h2>Add New Movie</h2>
+        <form className="add-movie-form" onSubmit={handleSubmit}>
+          <label>Title</label>
+          <input
+            type="text"
+            placeholder="Enter movie title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
 
-        <label>Language</label>
-        <input
-          type="text"
-          placeholder="Enter movie language"
-          value={language}
-          onChangeCapture={(e) => setLanguage(e.target.value)}
-        />
+          <label>Language</label>
+          <input
+            type="text"
+            placeholder="Enter movie language"
+            value={language}
+            onChange={(e) => setLanguage(e.target.value)}
+          />
 
-        <label>Genres</label>
-        <select onChange={handleGenreSelect}>
-          <option value="">-- Select a genre --</option>
-          {genreOptions.map((g, index) => (
-            <option key={index} value={g}>
-              {g}
-            </option>
-          ))}
-        </select>
+          <label>Genres</label>
+          <select onChange={handleGenreSelect}>
+            <option value="">-- Select a genre --</option>
+            {genreOptions.map((g, index) => (
+              <option key={index} value={g}>
+                {g}
+              </option>
+            ))}
+          </select>
 
-        <div className="selected-genres">
-          {genres.map((g, index) => (
-            <span key={index} className="genre-chip">
-              {g}
-              <button type="button" onClick={() => handleRemoveGenre(g)}>
-                ✖
-              </button>
-            </span>
-          ))}
-        </div>
-
-        <label>Duration (minutes)</label>
-        <input
-          type="number"
-          placeholder="Enter duration"
-          value={duration}
-          onChange={(e) => setDuration(e.target.value)}
-          required
-        />
-
-        <label>Rating</label>
-        <input
-          type="number"
-          min="1"
-          max="10"
-          step="0.1"
-          placeholder="Enter rating (1-10)"
-          value={rating}
-          onChange={(e) => setRating(e.target.value)}
-          required
-        />
-
-        <label>Category</label>
-        <select
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          required
-        >
-          <option value="">--Select--</option>
-          <option value="now_showing" >Now Showing</option>
-          <option value="coming_soon">Coming Soon</option>
-        </select>
-
-        <label>Trailer Link</label>
-        <input
-          type="text"
-          placeholder="Enter trailer link"
-          value={trailerLink}
-          onChange={(e) => setTrailerLink(e.target.value)}
-          required
-        />
-
-
-
-        <label>Description</label>
-        <textarea
-          placeholder="Enter description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        ></textarea>
-
-        <label>Poster Image</label>
-        <input type="file" accept="image/*" onChange={handlePosterChange} />
-
-        {posterPreview && (
-          <div className="poster-preview">
-            <img src={posterPreview} alt="Poster Preview" />
+          <div className="selected-genres">
+            {genres.map((g, index) => (
+              <span key={index} className="genre-chip">
+                {g}
+                <button type="button" onClick={() => handleRemoveGenre(g)}>
+                  ✖
+                </button>
+              </span>
+            ))}
           </div>
-        )}
 
-        <button type="submit" className="submit-btn">
-          Add Movie
-        </button>
+          <label>Duration (minutes)</label>
+          <input
+            type="number"
+            placeholder="Enter duration"
+            value={duration}
+            onChange={(e) => setDuration(e.target.value)}
+            required
+          />
 
-        {error && <p className="error">{error}</p>}
-        {successMsg && <p className="success">{successMsg}</p>}
-      </form>
-    </div>
+          <label>Rating</label>
+          <input
+            type="number"
+            min="1"
+            max="10"
+            step="0.1"
+            placeholder="Enter rating (1-10)"
+            value={rating}
+            onChange={(e) => setRating(e.target.value)}
+            required
+          />
+
+          <label>Category</label>
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            required
+          >
+            <option value="">--Select--</option>
+            <option value="now_showing">Now Showing</option>
+            <option value="coming_soon">Coming Soon</option>
+          </select>
+
+          <label>Trailer Link</label>
+          <input
+            type="text"
+            placeholder="Enter trailer link"
+            value={trailerLink}
+            onChange={(e) => setTrailerLink(e.target.value)}
+            required
+          />
+
+          <label>Description</label>
+          <textarea
+            placeholder="Enter description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          ></textarea>
+
+          <label>Poster Image</label>
+          <input type="file" accept="image/*" onChange={handlePosterChange} />
+
+          {posterPreview && (
+            <div className="poster-preview">
+              <img src={posterPreview} alt="Poster Preview" />
+            </div>
+          )}
+
+          <button type="submit" className="submit-btn">
+            Add Movie
+          </button>
+
+          {error && <p className="error">{error}</p>}
+          {successMsg && <p className="success">{successMsg}</p>}
+        </form>
+      </div>
     </div>
   );
 };

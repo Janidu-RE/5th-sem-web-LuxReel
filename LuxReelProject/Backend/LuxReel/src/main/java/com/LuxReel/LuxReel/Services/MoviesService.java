@@ -2,11 +2,13 @@ package com.LuxReel.LuxReel.Services;
 
 import com.LuxReel.LuxReel.Models.Movies;
 import com.LuxReel.LuxReel.Repository.MoviesRepository;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
 
 @Service
 public class MoviesService {
@@ -26,4 +28,11 @@ public class MoviesService {
     public List<Movies> findByMovieTitle(String title){
         return moviesRepository.findByTitleIgnoreCaseContaining(title);
     }
+
+    public void deleteMovieByTitle(String title) {
+        moviesRepository.deleteByTitle(title);
+    }
+
+
+
 }

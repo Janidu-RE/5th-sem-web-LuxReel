@@ -27,6 +27,7 @@ public class MovieController {
         return moviesService.findByMovieStatus(status);
     }
 
+
     @GetMapping("/search")
     public List<Movies> moviesByTitle(@RequestParam String title){
         return moviesService.findByMovieTitle(title);
@@ -36,4 +37,14 @@ public class MovieController {
     public Movies addMovie(@RequestBody Movies movie){
         return moviesService.addMovie(movie);
     }
+
+    @DeleteMapping("/id/{title}")
+    public ResponseEntity<?> deleteMovie(@PathVariable String title) {
+            moviesService.deleteMovieByTitle(title);
+            return ResponseEntity.ok("Movie deleted successfully");
+
+    }
+
+
+
 }

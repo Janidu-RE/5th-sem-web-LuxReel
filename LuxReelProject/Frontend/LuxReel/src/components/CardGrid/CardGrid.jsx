@@ -11,7 +11,13 @@ const CardGrid = ({status}) => {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const res = await axios.get(`http://localhost:8080/api/movies/${status}`);
+        const token = localStorage.getItem("token");
+        const res = await axios.get(`http://localhost:8080/api/movies/${status}`,
+          {headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          }
+        );
         setMovies(res.data);
       } catch (err) {
         console.error("Error fetching movies:", err);

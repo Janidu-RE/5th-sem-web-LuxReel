@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+
+
+.login-container {
+  font-family: 'Poppins', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: #121212;
+  color: #e1e1d7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.login-form {
+  background-color: #1f1f1f;
+  padding: 50px; /* bigger container */
+  border-radius: 16px;
+  width: 100%;
+  max-width: 480px; /* bigger form */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.login-title {
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #d7d7cd;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+  color: #fafaf7;
+}
+
+.input-group input {
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background-color: #2b2b2b;
+  color: #ffffff; /* keep input text white */
+  font-size: 1rem;
+}
+
+.input-group input::placeholder {
+  color: #aaaaaa;
+}
+
+.input-group input:focus {
+  outline: 2px solid var(--luxreel-yellow);
+}
+
+.login-button {
+  width: 100%;
+  padding: 14px;
+  background-color: #e6c200;
+  color: #121212;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #c09103;
+}
+
+.signup-link {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.signup-link span {
+  color: #ccc; /* softer text */
+}
+
+.signup-link a {
+  color: var(--luxreel-yellow);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.signup-link a:hover {
+  color: #e6c200;
+}
