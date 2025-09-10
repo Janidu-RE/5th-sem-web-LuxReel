@@ -1,14 +1,75 @@
 .home-section {
-    padding: 40px 20px;
+  padding: 40px 20px;
+  background-color: #111; /* dark background for sections */
 }
 
 .home-title {
-    font-family: 'Poppins', system-ui, Avenir, Helvetica, Arial, sans-serif; /* nicer modern font */
-    font-size: 2rem;
-    margin-bottom: 20px;
-    text-align: center;
-    text-transform: uppercase;
-    color: #ffffff; /* white text */
-    letter-spacing: 1px; /* little spacing for style */
-    font-weight: 600; /* bold but clean */
+  font-family: 'Poppins', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffffff;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+
+.movie-banner {
+  position: relative;
+  width: 100%;
+  height: 60vh; /* adjust height for banner */
+  background-image: url('https://images.unsplash.com/photo-1581905764498-2a02e7e153f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.8));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-content {
+  position: relative;
+  text-align: center;
+  color: #fff;
+  z-index: 1;
+}
+
+.banner-title {
+  font-size: 3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+.banner-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.banner-button {
+  padding: 12px 25px;
+  background: #ff4c4c;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.banner-button:hover {
+  background: #ff1f1f;
 }

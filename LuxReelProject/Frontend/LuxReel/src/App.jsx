@@ -5,6 +5,7 @@ import SelectedMovie from "./Pages/SelectedMovie/SelectedMovie";
 import MovieDetails from "./Pages/MovieDetails/MovieDetails";
 import Login from "./Pages/Login/Login";
 import AdminHome from "./Pages/AdminHome/AdminDashboard";
+import SignUp from "./Pages/SignUp/SignUp";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/movieDetails" element={<MovieDetails />} />
         <Route path="/login" element={<Login/>}/>
         <Route path="/admin" element={<AdminHome/>}/>
+        <Route path="/signup" element={<SignUp/>}/>
 
       </Routes>
     </BrowserRouter>

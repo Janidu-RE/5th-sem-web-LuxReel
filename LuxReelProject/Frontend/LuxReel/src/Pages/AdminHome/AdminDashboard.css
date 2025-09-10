@@ -201,7 +201,53 @@
   border-left: 4px solid #ff5252;
 }
 
-/* Responsive design */
+.logout-section {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.btn-logout {
+  background: linear-gradient(45deg, #c53232, #c10909);
+  color: white;
+}
+
+.btn-logout:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(158, 158, 158, 0.4);
+}
+
+.status-selector {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.status-selector label {
+  font-size: 0.85rem;
+  color: #ccc;
+  margin-bottom: 4px;
+}
+
+.status-selector select {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.status-selector select:focus {
+  outline: none;
+  border-color: #ffc107;
+}
+
 @media (max-width: 768px) {
   .admin-header {
     flex-direction: column;

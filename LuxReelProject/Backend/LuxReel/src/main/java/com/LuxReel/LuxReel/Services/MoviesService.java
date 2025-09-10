@@ -32,6 +32,9 @@ public class MoviesService {
     public void deleteMovieByTitle(String title) {
         moviesRepository.deleteByTitle(title);
     }
+    public Optional<Movies> findByMovieTitleExact(String title){
+        return moviesRepository.findByTitle(title); // add findByTitle() in repository
+    }
 
 
 

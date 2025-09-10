@@ -45,6 +45,25 @@ public class MovieController {
 
     }
 
+    @PutMapping("/id/{title}")
+    public ResponseEntity<?> updateMovie(@PathVariable String title, @RequestBody Movies updatedMovie) {
+        Optional<Movies> existingMovie = moviesService.findByMovieTitleExact(title);
+        if (existingMovie.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Movie not found");
+        }
+        Movies movie = existingMovie.get();
+
+        movie.setTitle(updatedMovie.getTitle());
+        movie.setCategory(updatedMovie.getCategory());
+        movie.setRating(updatedMovie.getRating());
+        movie.setReleaseDate(updatedMovie.getReleaseDate());
+        movie.setTrailerLink(updatedMovie.getTrailerLink());
+
+        Movies saved = moviesService.addMovie(movie); // same save() in repository
+        return ResponseEntity.ok(saved);
+    }
+
+
 
 
 }

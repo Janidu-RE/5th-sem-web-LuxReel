@@ -32,6 +32,11 @@ const Login = () => {
       } 
       catch (err) {
         console.log(err);
+        if(err.response && err.response.data){
+          setError(err.response.data||"Login Failed")
+        }else{
+          setError("Login Failed, try again later..")
+        }
       }
     };
     if(username && password){
@@ -47,6 +52,8 @@ const Login = () => {
       <div className="login-content">
         <form className="login-form" onSubmit={handleSubmit}>
           <h1 className="login-title">Welcome Back,</h1>
+
+          {error && <div className="error-message">{error}</div>}
 
           <div className="input-group">
             <label htmlFor="email">Email or Username</label>
