@@ -1,10 +1,10 @@
 .home-section {
   padding: 40px 20px;
-  background-color: #111; /* dark background for sections */
+  background-color: #111;
 }
 
 .home-title {
-  font-family: 'Poppins', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-size: 2rem;
   margin-bottom: 20px;
   text-align: center;
@@ -18,8 +18,8 @@
 .movie-banner {
   position: relative;
   width: 100%;
-  height: 60vh; /* adjust height for banner */
-  background-image: url('https://images.unsplash.com/photo-1581905764498-2a02e7e153f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+  height: 60vh;
+  background-image: url('banner.jpg');
   background-size: cover;
   background-position: center;
   display: flex;
@@ -40,6 +40,7 @@
 }
 
 .banner-content {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   position: relative;
   text-align: center;
   color: #fff;
@@ -47,6 +48,7 @@
 }
 
 .banner-title {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-size: 3rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -61,8 +63,8 @@
 
 .banner-button {
   padding: 12px 25px;
-  background: #ff4c4c;
-  color: #fff;
+  background: #ffcc00;
+  color: #000000;
   border: none;
   border-radius: 30px;
   font-size: 1rem;
@@ -70,6 +72,8 @@
   transition: background 0.3s ease;
 }
 
+
+
 .banner-button:hover {
-  background: #ff1f1f;
+  background: #d5ab03;
 }

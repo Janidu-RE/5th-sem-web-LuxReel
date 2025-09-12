@@ -31,6 +31,7 @@ public class UsersServices {
         if(usersRepository.existsByEmail(request.getEmail()))
             throw new RuntimeException("Email already registered");
 
+
         String hashedPassword = passwordEncoder.encode(request.getPassword()); // Use injected encoder
         Users user = new Users();
         user.setUsername(request.getUsername());

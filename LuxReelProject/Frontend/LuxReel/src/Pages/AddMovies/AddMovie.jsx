@@ -81,10 +81,8 @@ const AddMovie = () => {
         posterUrl = await uploadImageToCloudinary(poster);
       }
 
-      // get JWT from localStorage
       const token = localStorage.getItem("token");
 
-      // use axios to post with Authorization header
       const response = await axios.post(
         "http://localhost:8080/api/movies",
         {
@@ -175,7 +173,6 @@ const AddMovie = () => {
             type="number"
             min="1"
             max="10"
-            step="0.1"
             placeholder="Enter rating (1-10)"
             value={rating}
             onChange={(e) => setRating(e.target.value)}

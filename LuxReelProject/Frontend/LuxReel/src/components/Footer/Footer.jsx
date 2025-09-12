@@ -4,6 +4,7 @@ import "./Footer.css";
 import { FaFacebook, FaYoutube, FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
 import { FaFacebookMessenger } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -26,18 +27,18 @@ const Footer = () => {
         <div className="contact-section">
           <h4>Contact us:</h4>
           <div className="contact-icons">
-            <a href="#"><FaFacebookMessenger /></a>
-            <a href="#"><MdEmail /></a>
-            <a href="#"><FaWhatsapp /></a>
-            <a href="#"><FaPhoneAlt /></a>
+            <Link to="#"><FaFacebookMessenger /></Link>
+            <Link to="#"><MdEmail /></Link>
+            <Link to="#"><FaWhatsapp /></Link>
+            <Link to="#"><FaPhoneAlt /></Link>
           </div>
         </div>
 
         <div className="follow-section">
           <h4>Follow us on:</h4>
           <div className="social-icons">
-            <a href="#"><FaFacebook /></a>
-            <a href="#"><FaYoutube /></a>
+            <Link to="#"><FaFacebook /></Link>
+            <Link to="#"><FaYoutube /></Link>
           </div>
         </div>
       </div>
