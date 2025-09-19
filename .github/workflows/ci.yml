@@ -13,6 +13,18 @@ jobs:
       run:
         working-directory: LuxReelProject/Backend/LuxReel
 
+    services:
+      # Add MongoDB service for tests
+      mongodb:
+        image: mongo:5.0
+        ports:
+          - 27017:27017
+        options: >-
+          --health-cmd="mongosh --eval 'db.adminCommand(\"ping\")'"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -24,5 +36,24 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-      - name: Build and test (skip Selenium and API tests)
-        run: mvn clean test -DexcludeTests="**/selenium/**/*,**/ApiTests.java"
+      - name: Set up Chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+
+      - name: Cache ChromeDriver
+        uses: actions/cache@v3
+        with:
+          path: ~/.chrome-driver
+          key: ${{ runner.os }}-chrome-driver
+
+      - name: Set ChromeDriver path
+        run: |
+          echo "CHROMEWEBDRIVER=/usr/local/share/chromedriver-linux64" >> $GITHUB_ENV
+          echo "$CHROMEWEBDRIVER/bin" >> $GITHUB_PATH
+
+      - name: Build and test
+        run: mvn clean test
+        env:
+          SPRING_PROFILES_ACTIVE: test
+          MONGO_URI: mongodb://localhost:27017/luxreel-test

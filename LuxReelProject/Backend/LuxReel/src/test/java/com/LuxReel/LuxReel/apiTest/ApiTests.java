@@ -1,17 +1,30 @@
 package com.LuxReel.LuxReel.apiTest;
 
 import io.restassured.RestAssured;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.test.context.ActiveProfiles;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ActiveProfiles("test")
 public class ApiTests {
+
+    @LocalServerPort
+    private int port;
+
+    @BeforeEach
+    public void setUp() {
+        RestAssured.port = port;
+        RestAssured.baseURI = "http://localhost";
+    }
 
     @Test
     void signupShouldReturn200AndSuccessMessage() {
-        RestAssured.baseURI = "http://localhost:8080";
-
         String body = """
             {
               "username": "apitestuser6",
@@ -32,8 +45,6 @@ public class ApiTests {
 
     @Test
     void loginShouldReturnToken() {
-        RestAssured.baseURI = "http://localhost:8080";
-
         String body = """
             {
               "usernameOrEmail": "test",
