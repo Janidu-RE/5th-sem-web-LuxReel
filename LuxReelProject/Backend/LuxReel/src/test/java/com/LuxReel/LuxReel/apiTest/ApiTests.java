@@ -47,7 +47,7 @@ public class ApiTests {
     void loginShouldReturnToken() {
         String body = """
             {
-              "usernameOrEmail": "test",
+              "usernameOrEmail": "apitestuser6",
               "password": "123456"
             }
             """;
