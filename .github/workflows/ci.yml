@@ -10,10 +10,6 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: LuxReelProject/Backend/LuxReel
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -25,10 +21,10 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-      - name: Build with Maven (skip Selenium tests)
+      - name: Build with Maven (skip Selenium)
         run: mvn -B clean install -DexcludeTests="**/selenium/**"
 
-      - name: Run Unit Tests (skip Selenium)
+      - name: Run Unit & API Tests (skip Selenium)
         run: mvn test -DexcludeTests="**/selenium/**"
         env:
           SPRING_PROFILES_ACTIVE: test
