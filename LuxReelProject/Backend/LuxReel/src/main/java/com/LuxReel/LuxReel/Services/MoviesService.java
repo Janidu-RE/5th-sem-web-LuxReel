@@ -20,10 +20,11 @@ public class MoviesService {
         return moviesRepository.findAll();
     }
     public List<Movies> findByMovieStatus(String status){
-        return moviesRepository.findByCategory(status);
+       return moviesRepository.findByCategory(status);
     }
     public Movies addMovie(Movies movie){
-        return moviesRepository.save(movie);
+         return moviesRepository.save(movie);
+
     }
     public List<Movies> findByMovieTitle(String title){
         return moviesRepository.findByTitleIgnoreCaseContaining(title);

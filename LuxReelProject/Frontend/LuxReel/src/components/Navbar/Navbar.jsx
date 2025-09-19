@@ -31,7 +31,7 @@ const Navbar = ({ searchValue, onSearch }) => {
           onChange={(e) => onSearch(e.target.value)}
         />
         <button className="search-btn">🔍</button>
-      </div>s
+      </div>
 
       <ul className="navbar-links">
         <li>
