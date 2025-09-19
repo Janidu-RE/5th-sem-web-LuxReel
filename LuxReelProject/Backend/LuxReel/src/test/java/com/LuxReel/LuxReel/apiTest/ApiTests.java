@@ -25,13 +25,16 @@ public class ApiTests {
 
     @Test
     void signupShouldReturn200AndSuccessMessage() {
-        String body = """
+        // Use a unique username for each test run to avoid conflicts
+        String uniqueUsername = "testuser_" + System.currentTimeMillis();
+
+        String body = String.format("""
             {
-              "username": "apitestuser6",
-              "email": "apitestuser6@example.com",
+              "username": "%s",
+              "email": "%s@example.com",
               "password": "123456"
             }
-            """;
+            """, uniqueUsername, uniqueUsername);
 
         given()
                 .header("Content-Type", "application/json")
@@ -39,20 +42,23 @@ public class ApiTests {
                 .when()
                 .post("/api/auth/signup")
                 .then()
+                .log().all()  // Add this to see the response details
                 .statusCode(200)
                 .body(containsString("User registered successfully"));
     }
 
     @Test
     void loginShouldReturnToken() {
-        // First, create the user if it doesn't exist
-        String signupBody = """
+        // First create a user to login with
+        String uniqueUsername = "loginuser_" + System.currentTimeMillis();
+
+        String signupBody = String.format("""
             {
-              "username": "apitestuser6",
-              "email": "apitestuser6@example.com",
+              "username": "%s",
+              "email": "%s@example.com",
               "password": "123456"
             }
-            """;
+            """, uniqueUsername, uniqueUsername);
 
         given()
                 .header("Content-Type", "application/json")
@@ -63,12 +69,12 @@ public class ApiTests {
                 .statusCode(200);
 
         // Now try to login with the same credentials
-        String loginBody = """
+        String loginBody = String.format("""
             {
-              "usernameOrEmail": "apitestuser6",
+              "usernameOrEmail": "%s",
               "password": "123456"
             }
-            """;
+            """, uniqueUsername);
 
         given()
                 .header("Content-Type", "application/json")
@@ -76,9 +82,8 @@ public class ApiTests {
                 .when()
                 .post("/api/auth/login")
                 .then()
-                .log().all()  // Add this to see detailed response
                 .statusCode(200)
                 .body("token", notNullValue())
-                .body("username", equalTo("apitestuser6"));  // Fixed to match the actual username
+                .body("username", equalTo(uniqueUsername));
     }
 }
