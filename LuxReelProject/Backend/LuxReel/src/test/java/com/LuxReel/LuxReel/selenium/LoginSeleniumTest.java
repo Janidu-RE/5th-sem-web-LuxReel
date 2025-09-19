@@ -45,7 +45,7 @@ public class LoginSeleniumTest {
         driver.get("http://localhost:5173/login");
 
         WebElement usernameInput = driver.findElement(By.id("username"));
-        usernameInput.sendKeys("testuser");
+        usernameInput.sendKeys("test");
 
         WebElement passwordInput = driver.findElement(By.id("password"));
         passwordInput.sendKeys("123456");

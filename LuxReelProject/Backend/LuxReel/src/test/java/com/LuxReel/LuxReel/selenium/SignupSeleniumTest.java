@@ -51,10 +51,10 @@ public class SignupSeleniumTest {
         driver.get("http://localhost:5173/signup");
 
         WebElement usernameInput = driver.findElement(By.id("username"));
-        usernameInput.sendKeys("testuser13");
+        usernameInput.sendKeys("testuser");
 
         WebElement emailInput = driver.findElement(By.id("email"));
-        emailInput.sendKeys("testuser13@example.com");
+        emailInput.sendKeys("testuser@example.com");
 
         WebElement passwordInput = driver.findElement(By.id("password"));
         passwordInput.sendKeys("123456");
