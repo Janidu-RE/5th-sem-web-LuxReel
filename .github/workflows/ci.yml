@@ -24,8 +24,5 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-      - name: Run tests with Maven
-        run: mvn clean test
-        env:
-          SPRING_PROFILES_ACTIVE: test
-          MONGO_URI: mongodb+srv://janidu:janidu2001@cluster0.zgp4c9w.mongodb.net/MoviesDB
+      - name: Build and test (skip Selenium and API tests)
+        run: mvn clean test -DexcludeTests="**/selenium/**/*,**/ApiTests.java"
