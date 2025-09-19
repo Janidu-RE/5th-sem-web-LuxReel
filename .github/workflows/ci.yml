@@ -9,10 +9,9 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-
     defaults:
       run:
-        working-directory: LuxReelProject/Backend/LuxReel  # <--- run Maven here
+        working-directory: LuxReelProject/Backend/LuxReel
 
     steps:
       - name: Checkout code
@@ -25,11 +24,32 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-      - name: Build with Maven (skip Selenium)
-        run: mvn -B clean install -DexcludeTests="**/selenium/**"
+      - name: Build backend
+        run: mvn -B clean package -DskipTests
 
-      - name: Run Unit & API Tests (skip Selenium)
+      - name: Start Spring Boot
+        run: |
+          nohup mvn spring-boot:run -Dspring-boot.run.profiles=test &
+          echo $! > server.pid
+        env:
+          MONGO_URI: mongodb+srv://janidu:janidu2001@cluster0.zgp4c9w.mongodb.net/MoviesDB
+
+      - name: Wait for server to start
+        run: |
+          for i in {1..30}; do
+            if curl -f http://localhost:8080/actuator/health; then
+              echo "Server is up!"
+              break
+            fi
+            echo "Waiting for server to start..."
+            sleep 5
+          done
+
+      - name: Run API tests
         run: mvn test -DexcludeTests="**/selenium/**"
         env:
           SPRING_PROFILES_ACTIVE: test
           MONGO_URI: mongodb+srv://janidu:janidu2001@cluster0.zgp4c9w.mongodb.net/MoviesDB
+
+      - name: Stop Spring Boot
+        run: kill $(cat server.pid) || true
