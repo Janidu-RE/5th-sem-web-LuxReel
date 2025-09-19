@@ -45,7 +45,25 @@ public class ApiTests {
 
     @Test
     void loginShouldReturnToken() {
-        String body = """
+        // First, create the user if it doesn't exist
+        String signupBody = """
+            {
+              "username": "apitestuser6",
+              "email": "apitestuser6@example.com",
+              "password": "123456"
+            }
+            """;
+
+        given()
+                .header("Content-Type", "application/json")
+                .body(signupBody)
+                .when()
+                .post("/api/auth/signup")
+                .then()
+                .statusCode(200);
+
+        // Now try to login with the same credentials
+        String loginBody = """
             {
               "usernameOrEmail": "apitestuser6",
               "password": "123456"
@@ -54,12 +72,13 @@ public class ApiTests {
 
         given()
                 .header("Content-Type", "application/json")
-                .body(body)
+                .body(loginBody)
                 .when()
                 .post("/api/auth/login")
                 .then()
+                .log().all()  // Add this to see detailed response
                 .statusCode(200)
                 .body("token", notNullValue())
-                .body("username", equalTo("test"));
+                .body("username", equalTo("apitestuser6"));  // Fixed to match the actual username
     }
 }
