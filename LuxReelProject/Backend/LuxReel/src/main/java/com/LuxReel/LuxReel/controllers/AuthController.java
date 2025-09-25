@@ -31,7 +31,7 @@ public class AuthController {
             Users user = usersServices.registerUser(request);
             return ResponseEntity.ok("User registered successfully");
         } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
         }
     }
 

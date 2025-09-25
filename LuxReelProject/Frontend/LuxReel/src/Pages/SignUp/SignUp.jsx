@@ -39,7 +39,7 @@ const SignUp = () => {
 
     const signup = async () => {
       try {
-        const res = await axios.post(`http://localhost:8080/api/auth/signup`, {
+        const res = await axios.post(`http://localhost:9090/api/auth/signup`, {
           username: formData.username,
           email: formData.email,
           password: formData.password

@@ -10,7 +10,7 @@ const SearchBar = () => {
     const fetchMovies = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/movies/search?title=${search}`
+          `http://localhost:9090/api/movies/search?title=${search}`
         );
         setMovies(response.data);
         console.log(response.data);

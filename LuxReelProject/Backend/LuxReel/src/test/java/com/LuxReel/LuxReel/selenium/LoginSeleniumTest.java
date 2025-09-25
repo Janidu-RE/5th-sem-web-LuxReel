@@ -23,7 +23,7 @@ public class LoginSeleniumTest {
 
     @BeforeEach
     public void setUp() {
-        // Set up Chrome in headless mode for CI
+        //headless mode for CI
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
         options.addArguments("--no-sandbox");
@@ -31,7 +31,7 @@ public class LoginSeleniumTest {
         options.addArguments("--disable-gpu");
         options.addArguments("--window-size=1920,1080");
 
-        // Set ChromeDriver path for CI (will be set by CI environment)
+        // Set ChromeDriver path for CI
         if (System.getenv("CHROMEWEBDRIVER") != null) {
             System.setProperty("webdriver.chrome.driver", System.getenv("CHROMEWEBDRIVER") + "/chromedriver");
         }
@@ -41,7 +41,7 @@ public class LoginSeleniumTest {
 
     @Test
     public void testLogin() {
-        // Use a test frontend URL or start your frontend in CI
+
         driver.get("http://localhost:5173/login");
 
         WebElement usernameInput = driver.findElement(By.id("username"));

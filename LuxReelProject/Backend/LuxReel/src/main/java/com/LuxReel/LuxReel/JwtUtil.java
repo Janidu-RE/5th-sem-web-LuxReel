@@ -13,7 +13,7 @@ public class JwtUtil {
     private final Key key = Keys.hmacShaKeyFor("D9f8gH3kLmPq7RsT2vWxYzA1B4C5E6F7".getBytes());
 
     public String generateToken(String username) {
-        long expirationMs = 1000 * 60 * 60;
+        int expirationMs = 1000 * 60 * 60;
         return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(new Date())

@@ -14,7 +14,6 @@ jobs:
         working-directory: LuxReelProject/Backend/LuxReel
 
     services:
-      # Add MongoDB service for tests
       mongodb:
         image: mongo:5.0
         ports:

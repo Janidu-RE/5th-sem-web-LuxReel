@@ -1,0 +1,6 @@
+projectKey=LuxReelBackend
+serverUrl=http://localhost:9000
+serverVersion=25.9.0.112764
+dashboardUrl=http://localhost:9000/dashboard?id=LuxReelBackend
+ceTaskId=38f7af6a-73b3-4457-890b-77cd137cbb99
+ceTaskUrl=http://localhost:9000/api/ce/task?id=38f7af6a-73b3-4457-890b-77cd137cbb99

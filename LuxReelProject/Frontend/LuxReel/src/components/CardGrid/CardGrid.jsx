@@ -12,7 +12,7 @@ const CardGrid = ({status}) => {
     const fetchMovies = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get(`http://localhost:8080/api/movies/${status}`,
+        const res = await axios.get(`http://localhost:9090/api/movies/${status}`,
           {headers: {
             Authorization: `Bearer ${token}`,
           },
